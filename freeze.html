@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    
+
+
+    
+</body>
+</html>
+<script>
+
+//     var arr =[1,2,3,4]   //taking first array
+    
+
+//     function freeze(arr){
+//          var res = []
+//         // creting copy of above array
+//         for(var i =0;i<arr.length;i++){
+//             res.push(arr[i])
+//         }
+        
+//         res.push(10) //adding new element in copy of orignal array
+//         console.log(res)  
+
+
+//     }
+// console.log(arr)
+//     freeze(arr)
+
+
+
+
+//**************************************************************************************
+// var cat ={
+//     type:"cat",
+//     legs:"4",
+//     tail:true,
+
+// }
+
+// var tiger = Object.create(cat)
+// var lion= Object.create(cat)
+// var cheetah= Object.create(cat)
+// tiger.speed="60km"
+// lion.speed="50km"
+// cheetah.speed = "100km"
+
+
+// tiger.color="yellow"
+// lion.color = "brown"
+// cheetah.color="yellow"
+
+// console.log(tiger)
+// console.log(lion)
+// console.log(cheetah)
+
+
+// function shoes(p,d){
+//     this.brand="nike"
+//     this.seller="flipkart"
+//     this.category="casual"
+//     this.price=p
+    
+    
+// }
+
+// s1= new shoes(1200)
+// s2 = new shoes(1200)
+// s3 = new shoes(1200)
+// s4 = new shoes(1200)
+// s5 = new shoes(1200)
+
+
+
+// shoes.prototype.coupon=40
+
+// console.log(s1,s2,s3,s4,s5)
+
+
+let arr =[1,2,3]
+let arr2= new Array(1,2,3,4)
+console.log(arr2)
+
+let masai= new myarray(1,2,3,4)
+// console.log(masai)
+
+function myarray(){
+     this.length = arguments.length;
+     for(var i=0;i<this.length;i++){
+     this[i]=arguments[i]
+    
+     }
+     Object.defineProperty(this,"length",{
+         writable:true,
+         enumerable:false
+     })
+
+}
+ myarray.prototype.ढकलणे=function(el){
+     console.log(el)
+  
+     this[this.length]=el;
+  
+     this.length++;
+
+ }
+ myarray.prototype.काढा= function(){
+
+    let index = this.length-1
+    delete this[index]
+    this.length--;
+
+ }
+console.log(Object.values(masai))
+
+masai.ढकलणे(6)
+masai.ढकलणे(5)
+masai.काढा()
+
+
+
+</script>

@@ -1,0 +1,14 @@
+*{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 30px;
+    text-align: center;
+}
+
+button{
+    padding: 20px 50px;
+    border-radius: 10px;
+    background-color: seagreen;
+    border: seagreen;
+    margin-top: 200px;
+    color: white;
+}
