@@ -26,7 +26,7 @@ ondisplay()
 
 function ondisplay(){
     document.querySelector('.main').textContent=""
-    
+ document.querySelector(".total").textContent=  "task to do:"+taskarray.length
     taskarray.map(function(el,i){
         var head= document.createElement('p')
         head.textContent= "Task:" +el.task
@@ -66,9 +66,6 @@ function ondisplay(){
          head3.style.textDecoration="line-through";
 
         })
-
-
-        
 
         document.querySelector('.main').append(head,head2,head3,butt,butt2,butt3)
     })
