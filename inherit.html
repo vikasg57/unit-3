@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    
+var grandparent ={
+    adress:"yeola",
+    sirname:"Gaikwad",
+    education : "7th"
+}
+
+var parent = Object.create(grandparent)
+parent.education="MA"
+parent.name="vijay"
+
+var son = Object.create(parent)
+son.name="vikas"
+son.education="MBA"
+
+console.log("son :",son)
+
+
+function create(n,e){
+   
+    this.name=n
+    this.education=e
+
+    
+}
+
+var son = new create ("vikas","MBA")
+
+var parent= new create("vijay","MA")
+
+
+create.prototype.adress = "yeola"
+create.prototype.sirname = "gaikwad"
+create.prototype.education = "MA"
+
+console.log("parent",parent)
+    console.log("son", son)
+
+
+</script>

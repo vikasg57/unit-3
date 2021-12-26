@@ -64,6 +64,10 @@ function ondisplay(){
          head2.style.textDecoration="line-through";
          head.style.textDecoration="line-through";
          head3.style.textDecoration="line-through";
+           head2.style.color="green";
+         head.style.color="green";
+         head3.style.color="green";
+
 
         })
 

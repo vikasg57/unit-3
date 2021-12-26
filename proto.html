@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>some important array inbuilt functions in my native language (marathi)
+        inspect and see console for array properties
+    </h1>
+    <h1>
+        Array.prototype.जोडा(element) // for adding element in array
+      <br>
+        Array.prototype.काढा()   // for deleting element from array
+        <br>
+        Array.prototype.उलटकरा()  //for reversing array
+        <br>
+        Array.prototype.पहिलाघटक() /for returning first element of array
+
+    </h1>
+</body>
+</html>
+
+<script>
+    let arr = [1,2,3]
+        let arr2 = new Array(1,2,3,4)
+        console.log(arr2)
+        function myarray() {
+            this.length = arguments.length;
+
+            Object.defineProperty(this, "length", {
+                writable: true,
+                enumerable: false,
+            });
+            for (var i = 0; i < this.length; i++) {
+                this[i] = arguments[i]
+                // console.log(arguments[i])
+
+            }
+        }
+
+        myarray.prototype.जोडा = function (el) {
+            this[this.length] = el;
+            this.length++;
+        }
+
+
+        myarray.prototype.काढा = function () {
+
+            let index = this.length - 1
+            delete this[index]
+            this.length--;
+
+        }
+
+        myarray.prototype.उलटकरा
+            = function () {
+                var reverse = []
+                for (var i = this.length - 1; i >= 0; i--) {
+                    reverse.push(this[i])
+                } console.log(reverse)
+            }
+
+        myarray.prototype.पहिलाघटक = function () {
+            console.log(this[0])
+        }
+
+
+        let masai = new myarray(1,2,3,4)
+        console.log("masai:", Object.values(masai))
+        masai.जोडा(6)
+        masai.जोडा(5)
+        masai.काढा()
+        masai.उलटकरा()
+        masai.पहिलाघटक()
+        console.log("masai", Object.values(masai))
+    
+
+</script>
