@@ -4,9 +4,8 @@ var taskarray= JSON.parse(localStorage.getItem("taskarray")) || []
 ondisplay()
 
 function showtask(){
+    
 var taskname=document.querySelector('#taskname').value
-
-
 function creattask(el){
     this.task=el
     this.date = Date()
@@ -29,9 +28,9 @@ function ondisplay(){
  document.querySelector(".total").textContent=  "task to do:"+taskarray.length
     taskarray.map(function(el,i){
         var head= document.createElement('p')
-        head.textContent= "Task:" +el.task
+        head.textContent= "Task:" + el.task;
         var head2=document.createElement('p')
-        head2.textContent="Date:"+el.date
+        head2.textContent="Date:" +el.date
         var head3=document.createElement('p')
         head3.textContent="Status:"+el.status
         var butt=document.createElement('button')
