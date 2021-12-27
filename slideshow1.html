@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <form id="form">
+        <input type="integer" name="" id="card">
+        <input type="integer" name="" id="cvv">
+        <input type="month" name="" id="exp">
+        <input type="submit">
+
+    </form> -->
+<input type="text" id="url">
+<button onclick="storeImages()">Store Image</button>
+<a href="slideshow2.html"><button>watch slideshow
+</button></a>
+
+
+    
+</body>
+</html>
+
+<script>
+
+    // document.querySelector('#form').addEventListener('submit',paymentsubmit)
+
+    // function paymentsubmit(event){
+    //     event.preventDefault()
+
+    //     let payment= {
+    //         card:form.card.value,
+    //         cvv:form.cvv.value,
+    //         exp:form.exp.value
+    //     }
+    //     console.log(payment)
+
+
+    //      setTimeout(function(){
+    //          alert("payment sucessful")
+    //      },3000)
+
+
+
+    // }
+
+    var image_arr = JSON.parse(localStorage.getItem("image_arr")) || []
+
+    function storeImages(){
+        let url = document.querySelector('#url').value
+
+       image_arr.push(url)
+
+       localStorage.setItem("image_arr",JSON.stringify(image_arr))
+
+    
+
+    }
+
+  
+
+   
+    
+</script>
