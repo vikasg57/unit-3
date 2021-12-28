@@ -67,33 +67,23 @@ function ondisplay(){
 
     document.querySelector('.main').append(div)
 
-
     })
-
-
 }
 
 ondisplay()
 
 function sortout(){
-
     var selected = document.querySelector('#sort').value
-
     if(selected=="low"){
     info.sort(function (a, b) {
         return a.rating - b.rating
     })
-
     }
-
     if (selected == "high") {
         info.sort(function (a, b) {
             return b.rating - a.rating
         })
-
     }
-
     ondisplay(info)   
-
 }
 
