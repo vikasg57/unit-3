@@ -27,7 +27,7 @@ function slideshow(){
       i++
       img.src=imagearray[i]
       div.append(img)
-  },3000)
+  },4000)
 }
 
 var info= JSON.parse(localStorage.getItem("infofilms")) || []
@@ -44,15 +44,15 @@ function ondisplay(){
 
     let div2=document.createElement('div')
     let div3=document.createElement('div')
-    let title=document.createElement('h4')
+    let title=document.createElement('h2')
     let img= document.createElement('img')
     let info=document.createElement('div')
     let imgdiv=document.createElement('div')
     imgdiv.setAttribute('class',"imagediv")
 
     
-    let rate= document.createElement('p')
-    let date=document.createElement('p')
+    let rate= document.createElement('h3')
+    let date=document.createElement('h4')
 
     img.src=el.poster;
     title.textContent=el.name;
