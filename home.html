@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+
+    *{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+      header{
+        border: 2px solid black;
+        height: 50px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+    }
+    .nav>a{
+        margin-left: 40px;
+        margin-right: 40px;
+        text-decoration: none;
+        font-weight: bolder;
+        color: black;
+
+        
+    }
+   
+    .slideshow{
+        width: 70%;
+        height: 700px;
+        margin: auto;
+        margin-top: 10px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        border-radius: 20px;
+
+
+
+    }
+    .slideshow>img{
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+
+        
+
+    }
+    .main{
+        margin-top: 10px;
+        display: grid;
+        grid-template-columns: repeat(3,27%);
+        justify-content: center;
+        grid-gap: 20px;
+
+    }
+
+    .main img{
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+
+    }
+
+
+    .box{
+        
+     
+    }
+
+    .imagediv{
+        height: 70%;
+     
+    }
+
+   @media screen and (min-width:0px) and (max-width:375px){
+
+    .slideshow{
+        height: 300px;
+        width: 100%;
+    }
+       .main{
+       display: grid;
+       grid-template-columns: repeat(1,90%);
+       }
+   } 
+
+   @media screen and (min-width:376px) and (max-width:750px){
+         .slideshow{
+        height: 500px;
+        width: 90%;
+    }
+    .main{
+       display: grid;
+       grid-template-columns: repeat(2,40%);
+       }
+
+
+
+   }
+
+
+
+</style>
+<body>
+    <header>
+        <div class="nav">
+            <a href="home.html">HOME</a>
+            <a href="login.html">LOGIN</a>
+            <a href="signup.html">SIGNUP</a>
+        </div>
+    </header>
+
+    <div class="slideshow">
+
+    </div>
+
+    <div class="main">
+
+    </div>
+    
+</body>
+</html>
+
+
+
+<script>
+
+    
+      var imagearray=["https://images.hdqwalls.com/wallpapers/berlin-money-heist-4k-2020-h0.jpg",
+     "https://www.thenewsminute.com/sites/default/files/MoneyHeist_Lacasadepapel_Twitter_1092021_1200.jpg",
+     "https://www.koimoi.com/wp-content/new-galleries/2021/08/money-heist-was-bought-by-netflix-for-2-001.jpg",
+      "https://cdn.lifestyleasia.com/wp-content/uploads/sites/7/2021/05/25115013/Screen-Shot-2021-05-25-at-11.49.41-am.png",
+     "https://w0.peakpx.com/wallpaper/484/14/HD-wallpaper-ursula-corbero-as-tokyo-in-money-heist-money-heist.jpg",
+     "https://filmdaily.co/wp-content/uploads/2019/11/money-heist-7-nairobi.jpg"]
+
+slideshow()
+function slideshow(){
+
+
+ let div=document.querySelector('.slideshow')
+  let img= document.createElement('img')
+  img.src=imagearray[0]
+  div.append(img)
+
+  let i =0
+
+  id= setInterval(function(){
+      if (i==imagearray.length-1){
+          i=0
+      }
+      i++
+      img.src=imagearray[i]
+      div.append(img)
+  },3000)
+}
+
+var info=[]
+function filmsinfo(name,poster,date,rating){
+
+    this.name=name,
+    this.date=date,
+    this.poster=poster,
+    this.rating=rating
+}
+
+var filmsobj= new filmsinfo("Spiderman", "https://play-lh.googleusercontent.com/WSwCwp6UXhp0PTBscvBwLel6MFlEjTXTOpXnkLyOw-RkUmszMROPup3pe65cgdrsybCJ","20/12/2021","7")
+var filmsobj2= new filmsinfo("Sooryavanshi","https://in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/sooryavanshi-et00097952-27-10-2021-05-17-20.jpg","20/11/2021","6")
+var filmsobj3= new filmsinfo("Warning","https://m.media-amazon.com/images/M/MV5BYmEzYjE0NGQtZTg1Ni00NDFmLWExZDYtNTZjNDdlMmE3NWFiXkEyXkFqcGdeQXVyOTg4MDYyNw@@._V1_.jpg","25/12/2021","9")
+var filmsobj4=new filmsinfo("Sensation","https://m.media-amazon.com/images/M/MV5BMTRmMDgxNjQtMzg4Yy00N2VkLWFhZWEtZDI4MDdlOTk0NWFkXkEyXkFqcGdeQXVyODg4ODAwMTQ@._V1_.jpg","12/05/2021","5")
+var filmsobj5 = new filmsinfo("RRR","https://www.cinejosh.com/newsimg/newsmainimg/rrr-censor-completed_b_2611210420.jpg","15/03/2022","6")
+var filmsobj6 = new filmsinfo("83","https://cdn.bollywoodmdb.com/movies/largethumb/2018/83/poster.jpg","24/12/2021","7")
+var filmsobj7 = new filmsinfo("Pushpa","https://www.cinejosh.com/newsimg/newsmainimg/thaggede-le-pushpa-crosses-50m-milestone_b_2704210722.jpg","24/12/2021","6")
+var filmsobj8 = new filmsinfo("Jay Bhim","https://m.media-amazon.com/images/M/MV5BY2Y5ZWMwZDgtZDQxYy00Mjk0LThhY2YtMmU1MTRmMjVhMjRiXkEyXkFqcGdeQXVyMTI1NDEyNTM5._V1_FMjpg_UX1000_.jpg","04/10/2021","9")
+var filmsobj9 = new filmsinfo("Red Notice","https://cdn06.pramborsfm.com/storage/app/media/Prambors/Editorial/red%20notice-20211022133047.jpg?tr=w-800","30/08/2021","8")
+info.push(filmsobj,filmsobj2,filmsobj3,filmsobj4,filmsobj5,filmsobj6,filmsobj7,filmsobj8,filmsobj9)
+
+
+function ondisplay(){
+    document.querySelector('.main').innerHTML=null
+
+    info.map(function(el){
+
+    let div=document.createElement('div')
+    div.setAttribute('class',"box")
+
+    let div2=document.createElement('div')
+    let div3=document.createElement('div')
+    let title=document.createElement('h4')
+    let img= document.createElement('img')
+    let info=document.createElement('div')
+    let imgdiv=document.createElement('div')
+    imgdiv.setAttribute('class',"imagediv")
+
+    
+    let rate= document.createElement('p')
+    let date=document.createElement('p')
+
+    img.src=el.poster;
+    title.textContent=el.name;
+    rate.textContent= "IMDB Rating: "+ el.rating;
+    date.textContent= "Release Date: "+el.date;
+
+    div2.append(title)
+    div3.append(date,rate)
+    info.append(div2,div3)
+    imgdiv.append(img)
+    div.append(imgdiv,info)
+
+    document.querySelector('.main').append(div)
+
+
+    })
+
+
+}
+
+ondisplay()
+
+
+</script>

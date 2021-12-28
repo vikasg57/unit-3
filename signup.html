@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    .head {
+        font-size: 30px;
+        font-weight: bolder;
+        color: rgb(254, 189, 105);
+        text-align: center;
+        text-decoration: underline;
+    }
+
+    .main {
+        height: auto;
+
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        width: 35%;
+        align-items: center;
+        text-align: center;
+        margin-top: 5%;
+        box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+
+
+    }
+
+    button {
+        background-color: rgb(254, 189, 105);
+        border: transparent;
+        margin-top: 20px;
+        padding: 10px 40px;
+        cursor: pointer;
+
+    }
+
+    input {
+        margin-top: 20px;
+        padding: 5px 50px;
+    }
+
+    header{
+        border: 2px solid black;
+        height: 50px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    .nav>a{
+        margin-left: 40px;
+        margin-right: 40px;
+        text-decoration: none;
+        font-weight: bolder;
+        color: black;
+
+        
+    }
+</style>
+<body>
+
+
+    <header>
+        <div class="nav">
+            <a href="home.html">HOME</a>
+            <a href="login.html">LOGIN</a>
+            <a href="signup.html">SIGNUP</a>
+        </div>
+    </header>
+
+
+
+
+    <div class="main">
+        <h1>
+            Create account
+        </h1>
+        <table>
+            <tr>
+                <td>
+                    <input type="text" placeholder="ENTER YOUR NAME" id="name">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="email" placeholder="ENTER YOUR EMAIL" id="email">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="password" placeholder="SET PASSWWORD" id="pass">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button id="button">Create Your Account</button>
+                </td>
+    
+            </tr>
+            <tr>
+                <td>
+                    <p>Already have an Acoount ? <a href="login.html">Log in here</a> </p>
+                </td>
+            </tr>
+        </table>
+    </div>
+    </body>
+    
+</body>
+</html>
+<script>
+    document.querySelector("#button").addEventListener('click', signup)
+    var arr1 = JSON.parse(localStorage.getItem("arr1")) || []
+
+    function signup() {
+        var name = document.querySelector("#name").value
+        var email = document.querySelector("#email").value
+        var password = document.querySelector("#pass").value
+
+        var signupdata = {
+            name: name,
+            email: email,
+            password: password
+        };
+        arr1.push(signupdata)
+        localStorage.setItem("arr1", JSON.stringify(arr1))
+        console.log(arr1);
+
+        if (name != "" && email != "" && password != "") {
+            window.location.href = "login.html"
+        }
+
+
+    }
+
+</script>
