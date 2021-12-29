@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<input type="text" id="name"/>
+<button onclick="Register()">Register</button>
+
+
+
+
+
+
+
+    
+</body>
+</html>
+
+<script>
+
+
+// let myPromise = new Promise(function(resolve,reject){
+
+//     reject(" hi reject")
+
+
+// }) 
+
+// myPromise.then(function(response){
+
+//     console.log(response)
+// })
+// myPromise.catch(function (response) {
+
+//         console.log(response)
+// })
+
+
+// let passexam=true
+// let parentPromise = new Promise(function(resolve,reject){
+
+//     setTimeout(function(){
+
+//           if (passexam) {
+//             resolve("bike")
+//         }
+
+//         else {
+//             reject("nothing")
+//         }
+
+
+//     },3000)
+
+  
+// })
+// console.log("pending")
+
+// parentPromise.then(function(res){
+//     console.log(res)
+//     console.log("done")
+// })
+
+// parentPromise.catch(function (r) {
+//         console.log(r)
+// })
+
+let que= ["pablo","pandey","tappu","jetha"]
+
+    let dose = que.length-1
+function Register(){
+   
+
+    let name =document.querySelector('#name').value
+
+    que.push(name)
+
+    let message = name +': your registration is sucessful';
+
+    alert(message)
+
+    console.log(que)
+
+    let myPromise= new Promise(function(resolve,reject){
+
+        setTimeout(function(){
+             if (que[0] === name) {
+                resolve(name + ": its your turn")
+            }
+            console.log(dose)
+             if(dose==0){
+                reject('dose out of stock')
+            }
+        },5000)
+       
+    });
+
+
+    myPromise.then(function (res) {
+        console.log(res)
+    })
+
+    myPromise.catch(function(res){
+        console.log(res)
+    })
+
+}
+
+
+   
+
+function startvac(){
+    que.shift();
+    dose--
+
+    console.log(dose)
+
+
+    if(que.length==0 || dose==0){
+        clearInterval(id)
+    }
+    console.log(que)
+}
+
+var id = setInterval(startvac,3000)
+
+</script>
