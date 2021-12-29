@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+        .main{
+        display: grid;
+        grid-template-columns: repeat(3,33%);
+        margin: 3%;
+        grid-gap: 20px;
+
+    }
+
+    .imagediv{
+        width: 50%;
+        height:50%;
+    }
+
+    .main img{
+        width: 100%;
+        height: 100%;
+    }
+
+    
+</style>
+
+<body>
+
+    <div class="main"></div>
+    
+</body>
+</html>
+<script>
+
+    let url = "https://fakestoreapi.com/products"
+
+    async function getinfo(){
+
+        try{
+
+            let res=await fetch(url)
+            let data = await res.json()
+            let users=data
+            console.log(users)
+            ondisplay(users)
+
+
+        }
+        catch(err){
+            console.log(err)
+        }
+
+    }
+
+    getinfo()
+
+
+    function ondisplay(arr){
+
+        arr.map(function(el){
+
+            let div = document.createElement('div')
+            let div2 = document.createElement('div')
+
+            div2.setAttribute('class',"imagediv")
+
+            let img = document.createElement('img')
+
+            img.src=el.image
+
+            let title= document.createElement('p')
+            title.innerHTML =el.title
+
+            let price = document.createElement('p')
+            price.innerHTML ="PRICE: ₹"+ el.price
+            
+            let id = document.createElement('p')
+            id.innerHTML = "Id: "+ el.id
+
+            let rating = document.createElement('p')
+            rating.innerHTML ="Rating: "+ el.rating.rate
+
+            let cat = document.createElement('p')
+            cat.innerHTML = "Category: " + el.category
+
+            div2.append(img)
+
+            div.append(div2,title,price,id,rating,cat)
+
+            document.querySelector('.main').append(div)
+
+
+
+
+
+
+            // inmg.src= el.
+        })
+    }
+
+
+</script>
