@@ -1,0 +1,62 @@
+.tag{
+        height: 3rem ;
+        width: 5rem;
+    }
+    .main{
+        margin-top: 1%;
+    }
+    .box{
+ 
+        width: 20%;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        margin: auto;
+        text-align: center;
+        border-radius: 20px;
+    }
+
+    .upper{
+        margin-top: 1%;
+        text-align: center;
+
+    }
+
+    .upper input{
+        margin:2% 0%;
+
+    }
+
+    .upper label{
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    .upper button{
+        padding: 1% 5%;
+        font-size: 25px;
+        font-weight: bolder;
+        background-color: rgb(245, 211, 78);
+        border:1px solid rgb(245, 211, 78);
+        border-radius: 25px;
+
+    }
+    .upper input{
+        padding: 15px 80px;
+        border-radius: 25px;
+        border:3px solid rgb(231, 122, 122);
+    }
+
+    .upper ::placeholder{
+        font-size: 20px;
+
+    }
+    .errimage{
+        width: 70%;
+    }
+    
+    .poster{
+        width: 100%;
+        border-radius: 20px;
+    }
+
+
+</style>
