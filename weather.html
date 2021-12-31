@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>weather</title>
+</head>
+<style>
+*{
+         background-image:url("https://upload.wikimedia.org/wikipedia/commons/6/61/Blue_sky_and_clouds.jpg");  
+         font-family: Verdana,Geneva, Tahoma, sans-serif;
+         color: white;
+}
+
+.main{
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 3%;
+   
+}
+.forcast{
+    display: flex;
+     justify-content: space-evenly;
+}
+.title{
+    font-size: 80px;
+}
+.data_div{
+    text-align: center;
+     border-radius: 15px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    transition: 500ms ease-in-out;
+}
+.des{
+    transform: translate(0px,-55px);
+}
+.data_div:hover{
+    transform: scale(1.2);
+}
+
+.subforcast{
+    text-align: center;
+    transition: 500ms ease-in-out;
+    border-radius: 15px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  
+}
+
+.subforcast:hover{
+     transform: scale(1.2);
+
+}
+
+    .upper{
+        margin-top: 1%;
+        text-align: center;
+        margin-bottom: 3%;
+       
+
+    }
+
+    .upper input{
+        margin:2% 0%;
+        font-size: 25px;
+
+    }
+
+    .upper label{
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    .upper button{
+        padding: 10px 80px;
+        font-size: 25px;
+        font-weight: bolder;
+        background-color: white;
+        border:1px solid white;
+        border-radius: 25px;
+
+    }
+    .upper input{
+        padding: 10px 50px;
+        border-radius: 25px;
+        border:3px solid white
+    }
+
+    .upper ::placeholder{
+        font-size: 20px;
+        color: white;
+
+    }
+    .forcastimage{
+        width: 40%;
+        height: 100px;
+    }
+
+    .mainimage{
+        transform: translate(0px,-35px);
+       
+       
+    }
+
+     @media screen and (min-width:0px) and (max-width:375px){
+         .main{
+             display: flex;
+             flex-direction: column;
+             margin: auto;
+         }
+         .forcast{
+             display: flex;
+             flex-direction: column;
+             margin: auto;
+             
+            
+         }
+
+     }
+        
+</style>
+<body>
+
+
+<div class="upper">
+    <input type="text" id="city" placeholder="city name..."><br>
+    <button onclick="getWeather()">Search</button>
+
+</div>
+  
+
+    <div class="main border">
+        
+    <div class="data_div border"></div>
+
+    <div class="border">
+        <iframe width="500" height="500" frameborder="0" style="border-radius: 15px; border:0 " id="maps" 
+            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyARVhX5SK0cgLd39MbemmARw0WsIGALAJk&q=asia" allowfullscreen>
+        </iframe>
+
+    </div>
+    
+    
+    </div>
+
+    <div class="forcasthead" style="text-align: center;">
+
+    </div>
+ 
+    <div class="forcast border">
+    
+    </div>
+
+    
+
+
+
+    
+</body>
+</html>
+<script>
+
+    //api.openweathermap.org/data/2.5/weather?q={ city name }&appid={API key }
+
+    async function getWeather(){
+
+        try{
+
+    let city = document.querySelector('#city').value
+    let response= await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=ef1f461c50ec2b2607ec0c81c6403a0c
+&units=metric`)
+    let data = await response.json();
+   
+    Showweather(data)
+    map(city)
+   
+        }
+        catch(err){
+            console.log(err)
+        }
+
+        getWeather5()
+    }
+       async function getWeather5() {
+
+            try {
+
+                let city = document.querySelector('#city').value
+                let response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=ef1f461c50ec2b2607ec0c81c6403a0c&units=metric`)
+                let data = await response.json();
+                // console.log(data.list)
+                forcast(data.list)
+              
+
+            }
+            catch (err) {
+                console.log(err)
+            }
+
+
+
+        }
+    
+
+        // async function getMap() {
+
+        //         try {
+
+        //             let city = document.querySelector('#city').value
+        //             let response = await fetch(`https://www.google.com/maps/embed/v1/place?key=AIzaSyARVhX5SK0cgLd39MbemmARw0WsIGALAJk&q=${city}`)
+        //             let data = await response.json();
+        //             console.log(data)
+        //             Showweather(data)
+                   
+        //             console.log(response)
+        //         }
+        //         catch (err) {
+        //             console.log(err)
+        //         }
+        //     }
+
+          
+
+    
+
+
+
+    function Showweather(weather){
+        document.querySelector('.data_div').innerHTML=null
+
+        let loc=document.createElement('h2')
+
+        loc.innerHTML=weather.name
+
+        let des = document.createElement('h3')
+
+        des.innerHTML = weather.weather[0].description
+
+        des.setAttribute('class',"des")
+
+        let image = document.createElement('img')
+        image.src = `http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`
+        image.setAttribute('class', "mainimage")
+
+
+        
+        let temp = document.createElement('h1')
+
+        temp.setAttribute('class',"title")
+
+        temp.innerHTML= `${weather.main.temp}°
+`
+
+        let pressure = document.createElement('h3')
+
+        pressure.innerHTML =`Pressure - ${weather.main.pressure}`
+
+        let hum = document.createElement('h3')
+
+        hum.innerHTML = `Humidity-${weather.main.humidity}`
+
+        let level = document.createElement('h3')
+
+        level.innerHTML = `Sea level- ${weather.main.sea_level}`
+
+        document.querySelector('.data_div').append(loc,temp,des,image,pressure, hum,level)
+
+        
+
+
+    }
+
+    function forcast(arr){
+
+        console.log(arr)
+        document.querySelector('.forcast').innerHTML = null
+
+        document.querySelector('.forcasthead').innerHTML=null
+
+
+        let heading=document.createElement('h1')
+        heading.innerHTML="5 days wether forcasting."
+
+
+         
+        document.querySelector('.forcasthead').append(heading)
+
+        for(var i =0;i<arr.length;i=i+8){
+            
+
+           let date= document.createElement('p')
+           date.innerHTML= `Date - ${arr[i].dt_txt}`
+
+           let temp = document.createElement('h1')
+           temp.innerHTML=`${arr[i].main.temp}°`
+
+           let image=document.createElement('img')
+           image.src=`http://openweathermap.org/img/wn/${arr[i].weather[0].icon}@2x.png`
+           image.setAttribute('class',"forcastimage")
+
+           let tempmax = document.createElement('h3')
+            tempmax.innerHTML = `Max Temprature - ${arr[i].main.temp_max}`
+
+            let tempmin = document.createElement('h3')
+            tempmin.innerHTML = `Min Temprature - ${arr[i].main.temp_min}`
+
+           let div = document.createElement('div')
+           div.setAttribute('class',"subforcast")
+           div.append(date,temp,image,tempmax,tempmin)
+
+         
+           document.querySelector('.forcast').append(div)
+
+        }
+       
+
+    }
+
+    function map(city){
+        let location=document.querySelector('#maps')
+        location.src=`https://www.google.com/maps/embed/v1/place?key=AIzaSyARVhX5SK0cgLd39MbemmARw0WsIGALAJk&q=${city}`
+        console.log(city)
+
+        console.log(location)
+    }
+
+    
+
+</script>
