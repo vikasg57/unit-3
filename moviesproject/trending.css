@@ -1,0 +1,33 @@
+
+    *{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        text-align: justify;
+    }
+    .subdiv{
+        display: flex;
+        border-radius: 20px;
+        transition: 100ms ease-in-out;
+
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    }
+    .subdiv:hover{
+    transform: scale(1.1);
+    }
+
+    .main{
+        display: grid;
+        width: 80%;
+        margin: auto;
+        grid-template-columns: repeat(2,50%);
+        grid-gap: 30px;
+
+    }
+    img{
+        height: 500px;
+        border-radius: 20px;
+        margin-left: 5%;
+        position: relative;
+    }
+    .infodiv{
+        margin-left: 3%;
+    }
