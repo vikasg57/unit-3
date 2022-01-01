@@ -2,12 +2,12 @@
 
 
     
- var imagearray=["https://images.hdqwalls.com/wallpapers/berlin-money-heist-4k-2020-h0.jpg",
-     "https://www.thenewsminute.com/sites/default/files/MoneyHeist_Lacasadepapel_Twitter_1092021_1200.jpg",
-     "https://www.koimoi.com/wp-content/new-galleries/2021/08/money-heist-was-bought-by-netflix-for-2-001.jpg",
-      "https://cdn.lifestyleasia.com/wp-content/uploads/sites/7/2021/05/25115013/Screen-Shot-2021-05-25-at-11.49.41-am.png",
+ var imagearray=["https://i.pinimg.com/originals/18/31/a4/1831a4908cd8e20788bf90e5945d83f4.jpg",
+     "https://trailerbabu.com/wp-content/uploads/2021/08/bhoot-police-official-movie-trailer-poster-horizontal-movie-release-trailer-babu-2021-1024x538.jpg",
+     "https://www.metrotheatres.com/media/2969/smnwh-16000x640.jpg?preset=heropanel",
+      "https://www.vitalthrills.com/wp-content/uploads/2021/10/red-notice-trailer.jpg",
      "https://w0.peakpx.com/wallpaper/484/14/HD-wallpaper-ursula-corbero-as-tokyo-in-money-heist-money-heist.jpg",
-     "https://filmdaily.co/wp-content/uploads/2019/11/money-heist-7-nairobi.jpg"]
+     "https://www.disneyplusinformer.com/wp-content/uploads/2021/05/Black-Widow-Logo.jpg"]
 
 slideshow()
 function slideshow(){
