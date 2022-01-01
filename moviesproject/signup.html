@@ -131,12 +131,13 @@
             password: password
         };
         arr1.push(signupdata)
-        localStorage.setItem("arr1", JSON.stringify(arr1))
+       
         console.log(arr1);
 
         if (name != "" && email != "" && password != "") {
             window.location.href = "login.html"
         }
+         localStorage.setItem("arr1", JSON.stringify(arr1))
 
 
     }

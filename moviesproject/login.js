@@ -9,7 +9,7 @@
             this.rating = rating
     }
 
-    var filmsobj = new filmsinfo("Spiderman", "https://play-lh.googleusercontent.com/WSwCwp6UXhp0PTBscvBwLel6MFlEjTXTOpXnkLyOw-RkUmszMROPup3pe65cgdrsybCJ", "20/12/2021", "7")
+    var filmsobj =  new filmsinfo("Spiderman", "https://play-lh.googleusercontent.com/WSwCwp6UXhp0PTBscvBwLel6MFlEjTXTOpXnkLyOw-RkUmszMROPup3pe65cgdrsybCJ", "20/12/2021", "7")
     var filmsobj2 = new filmsinfo("Sooryavanshi", "https://in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/sooryavanshi-et00097952-27-10-2021-05-17-20.jpg", "20/11/2021", "6")
     var filmsobj3 = new filmsinfo("Warning", "https://m.media-amazon.com/images/M/MV5BYmEzYjE0NGQtZTg1Ni00NDFmLWExZDYtNTZjNDdlMmE3NWFiXkEyXkFqcGdeQXVyOTg4MDYyNw@@._V1_.jpg", "25/12/2021", "9")
     var filmsobj4 = new filmsinfo("Sensation", "https://m.media-amazon.com/images/M/MV5BMTRmMDgxNjQtMzg4Yy00N2VkLWFhZWEtZDI4MDdlOTk0NWFkXkEyXkFqcGdeQXVyODg4ODAwMTQ@._V1_.jpg", "12/05/2021", "5")

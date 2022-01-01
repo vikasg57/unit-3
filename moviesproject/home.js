@@ -35,7 +35,7 @@ var info= JSON.parse(localStorage.getItem("infofilms")) || []
 
 
 function ondisplay(){
-    document.querySelector('.main').innerHTML=null
+    document.querySelector('.main').innerHTML=null;
 
     info.map(function(el){
 
@@ -49,16 +49,12 @@ function ondisplay(){
     let info=document.createElement('div')
     let imgdiv=document.createElement('div')
     imgdiv.setAttribute('class',"imagediv")
-
-    
     let rate= document.createElement('h3')
     let date=document.createElement('h4')
-
     img.src=el.poster;
     title.textContent=el.name;
     rate.textContent= "IMDB Rating: "+ el.rating+"/10";
     date.textContent= "Release Date: "+el.date;
-
     div2.append(title)
     div3.append(date,rate)
     info.append(div2,div3)

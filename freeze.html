@@ -52,12 +52,19 @@
 // lion.speed="50km"
 // cheetah.speed = "100km"
 
+// var ligor=Object.create(tiger)
+// ligor.color="red"
+// console.log("ligor",ligor)
+
 
 // tiger.color="yellow"
 // lion.color = "brown"
 // cheetah.color="yellow"
 
-// console.log(tiger)
+// console.log("tiger:",tiger)
+
+
+
 // console.log(lion)
 // console.log(cheetah)
 
@@ -83,46 +90,70 @@
 
 // console.log(s1,s2,s3,s4,s5)
 
+//*******************************************
+// let arr =[1,2,3]
+// let arr2= new Array(1,2,3,4)
+// console.log(arr2)
 
-let arr =[1,2,3]
-let arr2= new Array(1,2,3,4)
-console.log(arr2)
 
-let masai= new myarray(1,2,3,4)
-// console.log(masai)
 
-function myarray(){
-     this.length = arguments.length;
-     for(var i=0;i<this.length;i++){
-     this[i]=arguments[i]
-    
-     }
-     Object.defineProperty(this,"length",{
-         writable:true,
-         enumerable:false
-     })
+// function myarray(){
+//      this.length = arguments.length;
+   
+//      Object.defineProperty(this,"length",{
+//          writable:true,
+//          enumerable:false,
+//      });
+//     for (var i = 0; i < this.length; i++) {
+//         this[i] = arguments[i]
+//         // console.log(arguments[i])
 
-}
- myarray.prototype.ढकलणे=function(el){
-     console.log(el)
-  
-     this[this.length]=el;
-  
-     this.length++;
+//     }
+// }
 
- }
- myarray.prototype.काढा= function(){
+//  myarray.prototype.जोडा=function(el){
+//      this[this.length]=el;
+//      this.length++;
+//  }
 
-    let index = this.length-1
-    delete this[index]
-    this.length--;
 
- }
-console.log(Object.values(masai))
+//  myarray.prototype.काढा= function(){
 
-masai.ढकलणे(6)
-masai.ढकलणे(5)
-masai.काढा()
+//     let index = this.length-1
+//     delete this[index]
+//     this.length--;
+
+//  }
+
+//  myarray.prototype.उलटकरा
+// =function(){
+//      var reverse = []
+//      for(var i=this.length-1;i>=0;i--){
+//         reverse.push(this[i]) 
+//      } console.log(reverse)
+//  }
+
+//  myarray.prototype.पहिलाघटक=function(){
+//      console.log(this[0])
+//  }
+
+
+
+
+// let masai = new myarray(1, 2, 3, 4)
+// console.log("masai:", Object.values(masai))
+// masai.जोडा(6)
+// masai.जोडा(5)
+//  masai.काढा()
+
+// // masai.उलटकरा()
+// masai.पहिलाघटक()
+
+// console.log("masai",Object.values(masai))
+
+
+
+
 
 
 

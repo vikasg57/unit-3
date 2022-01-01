@@ -14,13 +14,10 @@
 
             }
             else{
-                     ondisplay(users)
-
+                ondisplay(users)
             }
-           
-       
-            }
-            catch (err) {
+        }
+        catch (err){
              console.log(err)
 
              error()
@@ -96,7 +93,7 @@
 
     function error(){
         console.log("vikas")
-        document.querySelector('.main').innerHTML = null
+         document.querySelector('.main').innerHTML = null
         let p1 = document.createElement('p')
         p1.textContent = "MOVIE NOT FOUND"
       
