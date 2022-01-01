@@ -69,9 +69,13 @@
 
          let director = document.createElement('p')
         director.textContent ="Director : "+ users.Director
+        let info=document.createElement('div')
+        info.setAttribute('class',"info")
+
+        info.append(title,year,rating,lang,genre,director)
 
         div2.append(image)
-        div.append(div2,title,year,rating,lang,genre,director)
+        div.append(info,div2)
 
         document.querySelector('.main').append(div)
 
