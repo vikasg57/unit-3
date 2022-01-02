@@ -47,8 +47,14 @@ function appendmovies(movies){
         p.innerHTML= el.Title
 
         p.addEventListener('click',function(){
-            document.querySelector('#movies').style.height = "0px"
-            openmovie(el)
+            
+
+            setTimeout(function(){
+
+                document.querySelector('#movies').style.height = "0px"
+    
+            },5000)
+             openmovie(el)
 
         })
 
