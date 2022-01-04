@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    #search_results{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        grid-gap: 20px;
+    }
+    img{
+        height: 180px;
+        width: 320px;
+    }
+    #search_results>div{
+        border: 2px solid black;
+    }
+</style>
+<body>
+
+
+    <input type="text" id="video">
+    <button onclick="searchVideo()">Search</button>
+    <div id="search_results"></div>
+    <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/ToVJxUELgUk" title="YouTube video player"
+        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe> -->
+
+   
+    
+  
+
+</body>
+</html>
+
+<script>
+
+     const url = ""
+
+        const key = ""
+
+const results =document.querySelector('#search_results')
+
+async function searchVideo(){
+    try{
+        let video_query= document.querySelector("#video").value
+        let response = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=15&q=${video_query}&type=video&key=AIzaSyARVhX5SK0cgLd39MbemmARw0WsIGALAJk`)
+        let data = await response.json()
+        let video = data.items 
+        console.log(data.items)
+
+        ondisplay(video)
+    }
+    catch(er){
+        console.log(er)
+    }
+}
+
+const ondisplay =(items)=>{
+
+    results.innerHTML=null
+
+    items.map((el)=>{
+        // console.log(el)
+        
+        let { id: { videoId } } = el;
+       
+        let{snippet:{thumbnails:{medium:{url}}}}=el
+        let{snippet:{title}}=el
+        let thumb= document.createElement('img')
+        thumb.src=url
+        
+        let head=document.createElement('h3')
+        head.innerHTML=title
+        let div=document.createElement('div')
+
+        // console.log(url)
+        // console.log(videoId);
+
+
+
+        // let(snip)
+
+        thumb.addEventListener('click',function(){
+            playvideo(el,videoId)
+        })
+
+ 
+
+
+        
+
+       
+        div.append(thumb,head)
+        results.append(div)
+    });
+
+
+};
+
+        function playvideo(el,videoId) {
+            results.innerHTML = null
+           
+            // console.log("vikas")
+            console.log(videoId)
+            console.log(el)
+            let iframe = document.createElement("iframe")
+            iframe.src = `https://www.youtube.com/embed/${videoId}`
+            iframe.height = "500"
+            iframe.width = "700"
+            iframe.setAttribute("allowfullscreen", "true")
+            results.append(iframe)
+
+        }
+
+
+
+
+</script>
