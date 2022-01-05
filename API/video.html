@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+    div{
+        border: 1px solid red;
+    }
+    #navbar{
+        height: 100px;
+        margin-bottom: 50px;
+    }
+
+    #main{
+        display: flex;
+        height: 600px;
+        gap: 50px;
+    }
+    #recommendation{
+        flex: 2;
+    }
+    #video_details{
+        flex: 4;
+        
+    }
+    .subrecommnd{
+        display: flex;
+        margin-bottom: 10px;
+    }
+</style>
+<body>
+
+    <div id="navbar">
+        nav
+    </div>
+
+    <div id="main">
+
+        <div id="video_details">
+        
+        </div>
+
+        <div id="recommendation">
+            recommendation
+
+        </div>
+
+    </div>
+    
+    
+</body>
+</html>
+
+<script>
+    let {videoId,snippet} = JSON.parse(localStorage.getItem('clicked_video'))
+    let recommendation = JSON.parse(localStorage.getItem('recommendation_results'))
+    console.log(recommendation)
+
+
+    let video_div = document.getElementById('video_details')
+
+    let iframe = document.createElement("iframe")
+    iframe.src = `https://www.youtube.com/embed/${videoId}`
+           iframe.height = "100%"
+            iframe.width = "100%"
+            iframe.setAttribute("allowfullscreen", "true")
+
+            video_div.append(iframe)
+            // localStorage.removeItem("clicked_video");
+
+    showrecommendation(recommendation)
+
+    
+
+
+    function showrecommendation(data){
+
+        data.map((el)=>{
+            
+            let { snippet: { thumbnails: { medium: { url } } } } = el
+            let { snippet: { title } } = el
+            let{snippet:{channelTitle}}=el
+            let thumb = document.createElement('img')
+            thumb.src = url
+
+            let head = document.createElement('h3')
+            head.innerHTML = title
+            let channelname=document.createElement('p')
+            channelname.innerHTML=channelTitle
+            let div = document.createElement('div')
+            div.setAttribute('class',"subrecommnd")
+
+             let info= document.createElement('div')
+             info.setAttribute('class',"info")
+
+             info.append(head,channelname)
+
+             div.append(thumb,info)
+            document.querySelector('#recommendation').append(div)
+
+            
+
+        //  localStorage.removeItem("recommendation_results");
+
+
+
+        })
+
+
+    }
+    
+</script>
