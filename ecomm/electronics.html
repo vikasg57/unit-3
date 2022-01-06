@@ -11,13 +11,37 @@
 
 <body>
     <div id="header"></div>
+    <div id="data"></div>
     
 </body>
 </html>
 
 <script type="module">
+
+        import { getdata, appenddata } from "./scripts/showdata.js"
+
+        console.log(getdata,appenddata)
+
         import navbar from "./component/navbar.js";
             console.log(navbar)
 
             document.querySelector('#header').innerHTML = navbar()
+
+
+    let response = getdata("https://fakestoreapi.com/products/category/electronics")
+    let datadiv=document.querySelector('#data')
+console.log(response)
+
+response.then((res)=>{
+    console.log(res)
+    appenddata(res,data)
+})
+
+response.catch((er)=>{
+    console.log(er
+    )
+})
+
+        
+
 </script>

@@ -51,8 +51,8 @@ function appendmovies(movies){
 
             setTimeout(function(){
 
-                document.querySelector('#movies').style.height = "0px"
-    
+                document.querySelector('#movies').style.opacity = "0"
+                
             },5000)
              openmovie(el)
 
@@ -66,7 +66,7 @@ function appendmovies(movies){
 
 
 function debounce(fu,delay){
-    document.querySelector('#movies').style.height="200px"
+    document.querySelector('#movies').style.opacity="1"
 
     if(movie_wait){
         clearTimeout(movie_wait)
@@ -88,7 +88,10 @@ function openmovie(el){
     let div = document.createElement('div')
     let img=document.createElement('img')
     let title=document.createElement('h2')
+    title.setAttribute('class',"info")
+   
     let year=document.createElement('p')
+     year.setAttribute('class',"info")
 
     //    let rating = document.createElement('p')
     // rating.textContent = `Imdb Rating : ${el.imdbRating}`
