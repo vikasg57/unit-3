@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<link rel="stylesheet" href="styles/header.css">
+<style>
+
+</style>
+<body>
+
+    <header>
+
+    </header>
+
+ 
+
+        <div id="results"></div>
+
+  
+    
+</body>
+</html>
+
+<script type="module">
+    let results=document.querySelector('#results')
+ 
+
+    import {getdata, searchresult} from './scripts/showdata.js'
+    import header from './component/header.js'
+
+
+    document.querySelector('header').innerHTML=header()
+
+    var inputdish=document.querySelector('#searchdish')
+    inputdish.addEventListener('input',function(){
+         getdish()
+            
+    })
+ 
+  
+    function getdish(){
+
+         var dish = document.querySelector('#searchdish').value
+        console.log(dish)
+
+
+    let response = getdata(`https://themealdb.com/api/json/v1/1/search.php?s=${dish}`)
+   
+
+    response.then((res) => {
+        // console.log(res)
+        console.log(res.meals)
+        let data=res.meals
+        searchresult(data,results)
+
+     
+    })
+    response.catch((er) => {
+        console.log(er)
+    })
+
+    }
+
+
+
+
+
+
+    
+    
+
+
+</script>
+
+ 

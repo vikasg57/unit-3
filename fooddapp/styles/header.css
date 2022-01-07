@@ -1,0 +1,45 @@
+  #header {
+        display: flex;
+        padding-left: 4%;
+        padding-right: 4%;
+        border: solid black 1px;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #options {
+        display: flex;
+        gap: 20px;
+    }
+    #searchdish{
+        padding: 0px 100px;
+        font-size: 20px;
+    }
+    .searchbox{
+        display: flex;
+        margin: 3%;
+        
+        border-radius: 10px;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+        
+    }
+    .searchbox>img{
+        width: 100px;
+        border-radius: 10px;
+    }
+    .infodiv{
+        margin-left: 40px;
+    }
+        #results{
+        width: 440px;
+        height: 300px;
+        overflow:scroll;
+        
+        border: 1px solid red;
+        margin-left: 530px;
+        margin-top: -16px
+    }
+
+
+  
