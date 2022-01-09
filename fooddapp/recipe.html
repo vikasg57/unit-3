@@ -7,13 +7,55 @@
     <title>Document</title>
     <link rel="stylesheet" href="styles/header.css">
 </head>
+<style>
+    #container{
+       
+        display: flex;
+      flex-direction: column;
+
+    }
+    .mainimg{
+         border-radius: 20px;
+        
+    }
+    .infodiv{
+         width: 50%;
+
+    }
+    .main{
+        display: flex;
+        padding-left: 50px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        border-radius: 20px;
+
+    }
+    .measurediv{
+        display: flex;
+       width: 80%;
+      
+       justify-content: space-evenly;
+       flex-wrap: wrap;
+    }
+    .recipe{
+    text-align: justify;
+    line-height: 1.5;
+
+    }
+</style>
 <body>
     <header>
     
     </header>
     <div id="results"></div>
 
+    <h1>
+        RECIPE OF THE DAY :
+    </h1>
+
     <div id="container">
+
+        
+        
 
     </div>
     
@@ -77,7 +119,9 @@
             console.log(er)
         })
 
-
+        container.addEventListener('click',function(){
+             document.querySelector('#results').style.opacity = "0"
+        })
 
 
 
@@ -89,22 +133,61 @@
 
         data.map((el) => {
 
-
+            let{strArea, strMeal, strMealThumb,strIngredient1, strIngredient2, strIngredient3, strIngredient4, strIngredient5,strMeasure1, strMeasure2, strMeasure3, strMeasure4, strMeasure5,strInstructions}=el
+            
 
             let div = document.createElement('div')
+            div.setAttribute('class',"main")
             
-            // let imgdiv=document.createElement('div')
-            // imgdiv.setAttribute('class',"imgdiv")
+            let imgdiv=document.createElement('div')
+            imgdiv.setAttribute('class',"imgdiv")
             let infodiv = document.createElement('div')
+            infodiv.setAttribute('class',"infodiv")
           
-            let area = document.createElement('h5')
-            area.innerHTML = el.strArea
+            let area = document.createElement('h3')
+            area.innerHTML = `Country of origin :${strArea} ` 
             let img = document.createElement('img')
-            img.src = el.strMealThumb
-            let title = document.createElement('h3')
-            title.innerHTML = el.strMeal
-            infodiv.append(title, area)
-            div.append(img, infodiv)
+            img.setAttribute('class',"mainimg")
+            img.src =strMealThumb
+            let title = document.createElement('h1')
+            title.innerHTML = strMeal
+             
+             let ing=document.createElement('h4')
+             ing.textContent="Ingredients : "
+              let rec = document.createElement('h4')
+            rec.textContent = "Recipe : "
+       
+             let ingdiv = document.createElement('div')
+
+            let ingredient = document.createElement('p')
+            ingredient.textContent=strIngredient1 +" : "+ strMeasure1
+            let ingredient2 = document.createElement('p')
+            ingredient2.textContent = strIngredient2+" : " + strMeasure1
+            let ingredient3 = document.createElement('p')
+            ingredient3.textContent = strIngredient3+" : " + strMeasure1
+            let ingredient4 = document.createElement('p')
+            ingredient4.textContent = strIngredient4+ " : " + strMeasure1
+            let ingredient5 = document.createElement('p')
+            ingredient5.textContent = strIngredient5+ " : " + strMeasure1
+
+
+
+            let recipe=document.createElement('p')
+            recipe.textContent=strInstructions
+            recipe.setAttribute('class',"recipe")
+
+            // let measurediv = document.createElement('div')
+
+         
+            ingdiv.setAttribute('class', "measurediv")
+
+
+
+            ingdiv.append(ingredient,ingredient2,ingredient3,ingredient4,ingredient5)
+
+            imgdiv.append(img)
+            infodiv.append(title, area,ing,ingdiv,rec,recipe)
+            div.append(imgdiv, infodiv)
 
             location.append(div)
 

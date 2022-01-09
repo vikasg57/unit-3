@@ -9,6 +9,33 @@
 </head>
 <link rel="stylesheet" href="styles/header.css">
 <style>
+    body{
+        margin: 0px;
+        
+    }
+    #maindiv{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        grid-gap: 25px;
+        width: 90%;
+        margin: auto;
+        text-align: center;
+         margin-top: 30px;
+        
+    }
+    
+
+    #maindiv img{
+        width: 100%;
+        border-radius: 20px;
+
+
+    }
+    #maindiv>div{
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+         border-radius: 20px;
+    }
+   
 
 </style>
 <body>
@@ -21,6 +48,8 @@
 
         <div id="results"></div>
 
+        <div id="maindiv"></div>
+
   
     
 </body>
@@ -30,7 +59,7 @@
     let results=document.querySelector('#results')
  
 
-    import {getdata, searchresult} from './scripts/showdata.js'
+    import {getdata, searchresult,getitem} from './scripts/showdata.js'
     import header from './component/header.js'
 
 
@@ -50,6 +79,8 @@
 
 
     let response = getdata(`https://themealdb.com/api/json/v1/1/search.php?s=${dish}`)
+
+    //  getitem()
    
 
     response.then((res) => {

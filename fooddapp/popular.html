@@ -55,7 +55,29 @@
 
     }
 
+  
 
+    let latestdish=()=>{
+
+        try{
+
+        
+        let res =getdata("https://themealdb.com/api/json/v1/1/search.php?a=indian")
+
+        
+        console.log(res)
+
+        }
+
+        catch(er){
+            console.log(er)
+        }
+
+
+
+    }
+
+    latestdish()
 
 
 
