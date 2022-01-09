@@ -1,0 +1,39 @@
+  body{
+        margin: 0px;
+        
+    }
+    #maindiv,#popular{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        grid-gap: 25px;
+        width: 90%;
+        margin: auto;
+        text-align: center;
+         margin-top: 30px;
+        
+    }
+    
+    #maindiv img{
+        width: 100%;
+        border-radius: 20px;
+
+
+    }
+    #maindiv>div{
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+         border-radius: 20px;
+    }
+
+    #popular>div{
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+         border-radius: 20px;
+    }
+
+    #popular img{
+        width: 100%;
+        border-radius: 20px;
+
+
+    }
+
+   

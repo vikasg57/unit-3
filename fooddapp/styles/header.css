@@ -33,13 +33,10 @@
     }
         #results{
         width: 440px;
-        height: 300px;
+        transition: 0.5s;
         overflow:scroll;
-        opacity: 0;
         /* display: none; */
         background-color: white;
-        
-        border: 1px solid red;
         margin-left: 530px;
         margin-top: -16px;
         position: absolute;

@@ -5,39 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/search.css">
     
 </head>
-<link rel="stylesheet" href="styles/header.css">
-<style>
-    body{
-        margin: 0px;
-        
-    }
-    #maindiv{
-        display: grid;
-        grid-template-columns: repeat(4,1fr);
-        grid-gap: 25px;
-        width: 90%;
-        margin: auto;
-        text-align: center;
-         margin-top: 30px;
-        
-    }
-    
-
-    #maindiv img{
-        width: 100%;
-        border-radius: 20px;
 
 
-    }
-    #maindiv>div{
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-         border-radius: 20px;
-    }
-   
 
-</style>
 <body>
 
     <header>
@@ -59,7 +33,7 @@
     let results=document.querySelector('#results')
  
 
-    import {getdata, searchresult,getitem} from './scripts/showdata.js'
+    import {getdata, searchresult,getitem,hidebox} from './scripts/showdata.js'
     import header from './component/header.js'
 
 
@@ -100,9 +74,9 @@
 
 
 
+let body=document.querySelector('#maindiv')
 
-
-    
+    hidebox(body,results)
     
 
 

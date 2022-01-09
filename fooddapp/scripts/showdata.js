@@ -13,7 +13,7 @@ async function getdata(url){
 }
 
 function searchresult(data,location){
-     document.querySelector('#results').style.opacity="1"
+     document.querySelector('#results').style.height="300px"
     location.innerHTML=null
 
     
@@ -81,16 +81,123 @@ let getitem=(el,location)=>{
         location.append(div)
 
 
+}
 
-    
+let populardish=(items,location)=>{
 
+    items.map((el)=>{
+                 let{strArea,strMealThumb,strMeal}=el
+
+     console.log(strArea,strMeal,strMealThumb)
+
+     console.log(el.strArea)
+        let div=document.createElement('div')
+        div.setAttribute('class',"mainbox")
+         let infodiv=document.createElement('div')
+        infodiv.setAttribute('class',"maininfodiv")
+         let area=document.createElement('h3')
+        area.innerHTML=strArea
+        let img=document.createElement('img')
+        img.src=strMealThumb
+        let title=document.createElement('h3')
+        title.innerHTML=strMeal
+
+
+        infodiv.append(title,area,)
+
+        div.append(img,infodiv)
+
+        location.append(div)
+
+    })
 
 
 
 }
 
 
+ function randomrecipe(data, location) {
+        location.innerHTML = null
+
+
+        //location as a argument so we can append data on any location 
+
+        data.map((el) => {
+
+            let{strArea, strMeal, strMealThumb,strIngredient1, strIngredient2, strIngredient3, strIngredient4, strIngredient5,strMeasure1, strMeasure2, strMeasure3, strMeasure4, strMeasure5,strInstructions}=el
+            
+
+            let div = document.createElement('div')
+            div.setAttribute('class',"main")
+            
+            let imgdiv=document.createElement('div')
+            imgdiv.setAttribute('class',"imgdiv")
+            let infodiv = document.createElement('div')
+            infodiv.setAttribute('class',"infodiv")
+          
+            let area = document.createElement('h3')
+            area.innerHTML = `Country of origin :${strArea} ` 
+            let img = document.createElement('img')
+            img.setAttribute('class',"mainimg")
+            img.src =strMealThumb
+            let title = document.createElement('h1')
+            title.innerHTML = strMeal
+             
+             let ing=document.createElement('h4')
+             ing.textContent="Ingredients : "
+              let rec = document.createElement('h4')
+            rec.textContent = "Recipe : "
+       
+             let ingdiv = document.createElement('div')
+
+            let ingredient = document.createElement('p')
+            ingredient.textContent=strIngredient1 +" : "+ strMeasure1
+            let ingredient2 = document.createElement('p')
+            ingredient2.textContent = strIngredient2+" : " + strMeasure1
+            let ingredient3 = document.createElement('p')
+            ingredient3.textContent = strIngredient3+" : " + strMeasure1
+            let ingredient4 = document.createElement('p')
+            ingredient4.textContent = strIngredient4+ " : " + strMeasure1
+            let ingredient5 = document.createElement('p')
+            ingredient5.textContent = strIngredient5+ " : " + strMeasure1
 
 
 
-export {getdata,searchresult,getitem}
+            let recipe=document.createElement('p')
+            recipe.textContent=strInstructions
+            recipe.setAttribute('class',"recipe")
+
+            // let measurediv = document.createElement('div')
+
+         
+            ingdiv.setAttribute('class', "measurediv")
+
+
+
+            ingdiv.append(ingredient,ingredient2,ingredient3,ingredient4,ingredient5)
+
+            imgdiv.append(img)
+            infodiv.append(title, area,ing,ingdiv,rec,recipe)
+            div.append(imgdiv, infodiv)
+
+            location.append(div)
+
+
+        })
+    }
+
+    let hidebox=(body,box)=>{
+        
+      body.addEventListener('click',function(){
+             document.querySelector('#results').style.height= "0px"
+        })
+        box.addEventListener('click',function(){
+            document.querySelector('#results').style.height = "300px"
+        })
+
+    }
+
+
+
+
+export {getdata,searchresult,getitem,populardish,randomrecipe,hidebox}

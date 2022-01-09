@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>popular</title>
     <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/search.css">
 </head>
 <body>
     <header>
     
     </header>
     <div id="results"></div>
+    <div id="maindiv"></div>
+    <div id="popular"></div>
+   
     
 </body>
 </html>
@@ -19,9 +23,10 @@
     let results = document.querySelector('#results')
 
 
-    import { getdata, searchresult } from './scripts/showdata.js'
+    import { getdata, searchresult,getitem,populardish,hidebox} from './scripts/showdata.js'
     import header from './component/header.js'
 
+    hidebox(maindiv,results)
 
     document.querySelector('header').innerHTML = header()
 
@@ -55,25 +60,22 @@
 
     }
 
-  
+  let popular=document.querySelector('#popular')
 
-    let latestdish=()=>{
+    async function latestdish(){
 
         try{
-
-        
-        let res =getdata("https://themealdb.com/api/json/v1/1/search.php?a=indian")
-
-        
-        console.log(res)
-
+        let res =await getdata("https://www.themealdb.com/api/json/v1/1/filter.php?a=american")
+    
+        let {meals}=res
+         console.log(meals)
+         populardish(meals,popular)
+         
         }
 
         catch(er){
             console.log(er)
         }
-
-
 
     }
 
