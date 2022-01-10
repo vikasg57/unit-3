@@ -11,6 +11,7 @@ async function searchMovie(){
     try{
 
     let movie=document.querySelector('#movie').value
+    console.log(movie)
 
     if(movie.length<=2){
         return false
@@ -24,7 +25,7 @@ async function searchMovie(){
 
     appendmovies(movie_arr)
 
-    console.log(data)
+    // console.log(data)
     }
     catch(err){
         console.log(err)

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    <link rel="stylesheet" href="styles/header.css">
+</head>
+<style>
+ 
+
+</style>
+
+<body>
+
+    <header>
+
+    </header>
+
+    <button id="button">GET USER REPOS</button>
+
+    <div class="container">
+
+    </div>
+
+   
+    
+</body>
+</html>
+
+<script type="module">
+
+    import {navbar} from './components/navbar.js'
+    import {getUser} from './scripts/getuser.js'
+
+    document.querySelector('header').innerHTML=navbar()
+
+
+let input = document.querySelector('#search-input')
+
+input.addEventListener('keypress',searchUser)
+var response
+
+async function searchUser(event){
+    
+    if(event.key==='Enter')
+    {
+        // console.log(event)
+
+        let query = input.value
+
+         response = await getUser(query)
+        // console.log(response)
+    
+
+    let{avatar_url}=response
+    // console.log(response)
+
+    document.querySelector('#profile-img').src=avatar_url
+
+    }
+   
+
+
+}
+
+
+let button = document.querySelector('#button')
+button.addEventListener('click',function(){
+     getUserRepo()
+
+})
+
+async function getUserRepo(){
+
+    try{
+          let res = await fetch(response.repos_url)
+        let repo_data = await res.json()
+    
+        displayrepo(repo_data)
+
+    }
+  
+
+    catch(er){
+
+    }
+
+}
+
+
+
+let displayrepo=(items)=>{
+    // console.log(items)
+
+    items.map((el)=>{
+        // console.log(el)
+        let{name,url}=el
+        
+
+        // console.log(name)
+         console.log(url)
+        getrepo()
+
+        async function getrepo(){
+              try {
+                let response = await fetch(el.url)
+                let data = await response.json()
+                 console.log(data)
+            }
+            catch (er) {
+                console.log(er)
+            }
+
+        }
+        
+
+        let div = document.createElement('div')
+        div.setAttribute('class', "repodiv")
+        let div2 = document.createElement('div');
+        div2.setAttribute('class', "subdiv");
+
+    let head=document.createElement('h2')
+      head.innerHTML=name
+
+     let giturl = document.createElement('p')
+      let contri = document.createElement('p')
+       let content = document.createElement('p')
+        let html_url = document.createElement('p')
+
+        div.append(head)
+        document.querySelector('.container').append(div)
+
+        
+
+    })
+
+
+
+}
+
+
+</script>
