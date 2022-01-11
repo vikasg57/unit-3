@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+
+    #main{
+        display: flex;
+    }
+    #main>div{
+        flex: 1;
+
+    }
+
+    form{
+        width: 20%;
+    }
+
+    
+</style>
+<body>
+
+    <div id="main">
+        <div>
+            <form >
+                <h1>Register</h1>
+                <input type="text" id="name" placeholder="name"/>
+                <input type="email" id="email" placeholder="email"/>
+                <input type="text" id="username" placeholder="username"/>
+                <input type="password" id="password" placeholder="password"/>
+                <input type="number" id="mobile" placeholder="mobile">
+                <input type="text" id="description" placeholder="description"/>
+                <input type="submit" />
+
+            </form>
+            
+        </div>
+
+        <div>
+            <form action="" onsubmit="login(event)">
+                <h1>Login</h1>
+                <input type="text" id="username_login"/>
+                <input type="password" id="password_login"/>
+
+                <input type="submit" />
+
+                
+
+            </form>
+        </div>
+    </div>
+
+
+    
+</body>
+</html>
+<script>
+
+    // masai-school/api-mocker/wiki/Authentication-API
+
+    // https://masai-api-mocker.herokuapp.com/auth/login
+
+    document.querySelector('form').addEventListener('submit',function(){
+        Register(event)
+    })
+
+    async function Register(e){
+         
+
+
+        try{
+             e.preventDefault();
+
+            var register_data = {
+                name: document.querySelector('#name').value,
+                email: document.querySelector('#email').value,
+                password: document.querySelector('#password').value,
+                username: document.querySelector('#username').value,
+                mobile: document.querySelector('#mobile').value,
+                description: document.querySelector('#description').value
+            }
+
+            register_data= JSON.stringify(register_data)
+            console.log(register_data)
+
+            
+
+        }
+
+        catch(er){
+            console.log(er)
+        }
+
+
+        
+        try{
+              let reg_api = `https://masai-api-mocker.herokuapp.com/auth/register`
+
+            let response = await fetch(reg_api, {
+                method: 'POST',
+                body: register_data,
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+            });
+
+            let data = await response.json()
+
+            console.log(data)
+            
+
+        }
+        catch(er){
+            console.log(er)
+        }
+      
+
+
+    }
+
+
+    async function login(e){
+
+        try{
+            e.preventDefault()
+            var login_data = {
+                username: document.querySelector('#username_login').value,
+
+                password: document.querySelector('#password_login').value
+            }
+
+            login_data = JSON.stringify(login_data)
+
+            let login_url = `https://masai-api-mocker.herokuapp.com/auth/login`
+
+            let response = await fetch(login_url, {
+                method: "POST",
+                body: login_data,
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+            });
+
+            var data = await response.json()
+            console.log(data)
+
+        }
+        catch(er){
+            console.log(er)
+        }
+
+
+
+        let username= document.querySelector('#username_login').value
+
+
+
+        getuser(username,data.token)
+    }
+
+    async function getuser(username,token){
+
+        try{
+            let api = `https://masai-api-mocker.herokuapp.com/user/${username}`
+
+            let response = await fetch(api, {
+
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+
+            });
+
+            let data = await response.json()
+            console.log(data)
+
+        }
+        catch(er){
+            console.log(er)
+        }
+  
+    }
+
+
+
+</script>
