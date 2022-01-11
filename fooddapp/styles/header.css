@@ -31,7 +31,8 @@
     .infodiv{
         margin-left: 40px;
     }
-        #results{
+
+    #results{
         width: 440px;
         transition: 0.5s;
         overflow:scroll;
@@ -40,10 +41,16 @@
         margin-left: 530px;
         margin-top: -16px;
         position: absolute;
+       box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
-        
-        
+
     }
+
+    #results::-webkit-scrollbar{
+        display: none;
+    }
+
+    
 
 
   

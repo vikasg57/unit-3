@@ -33,17 +33,19 @@
     let results=document.querySelector('#results')
  
 
-    import {getdata, searchresult,getitem,hidebox} from './scripts/showdata.js'
+    import {getdata, searchresult,getitem,hidebox,debounce} from './scripts/showdata.js'
     import header from './component/header.js'
 
 
-    document.querySelector('header').innerHTML=header()
+document.querySelector('header').innerHTML=header()
 
-    var inputdish=document.querySelector('#searchdish')
-    inputdish.addEventListener('input',function(){
-         getdish()
-            
-    })
+
+
+     var inputdish=document.querySelector('#searchdish')
+     inputdish.addEventListener('input',function(){
+         debounce(getdish)
+     })
+
  
   
     function getdish(){
@@ -72,12 +74,11 @@
     }
 
 
-
-
 let body=document.querySelector('#maindiv')
 
     hidebox(body,results)
-    
+
+    // export{getdish}
 
 
 </script>

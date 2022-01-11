@@ -12,6 +12,9 @@ async function getdata(url){
 
 }
 
+
+// import{getdish} from './fooddapp/index.html'
+
 function searchresult(data,location){
      document.querySelector('#results').style.height="300px"
     location.innerHTML=null
@@ -197,7 +200,27 @@ let populardish=(items,location)=>{
 
     }
 
+    let searchdata;
+
+    function debounce(fu){
+
+     
+        if(searchdata){
+            clearTimeout(searchdata)
+        }
+
+
+       searchdata=setTimeout(function(){
+          fu()
+
+        },2000)
+
+
+       
+            
+    }
 
 
 
-export {getdata,searchresult,getitem,populardish,randomrecipe,hidebox}
+
+export {getdata,searchresult,getitem,populardish,randomrecipe,hidebox,debounce,searchdata}
