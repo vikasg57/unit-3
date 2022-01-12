@@ -54,9 +54,10 @@
     
 
     async function login(e){
+         e.preventDefault()
 
         try{
-            e.preventDefault()
+           
             
              var user = {
                 username: form.username_login.value,
@@ -68,36 +69,43 @@
             user = JSON.stringify(user)
             console.log(user)
 
+            
+            let api = `https://masai-api-mocker.herokuapp.com/auth/login`
+
+            let response = await fetch(api, {
+                method: "POST",
+
+                body: user,
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+
+            });
+
+            var data = await response.json()
+            console.log(data)
+                
+            let username = form.username_login.value
+
+            getuserdata(username, data.token)
+
+            loginonpage(data)
+            
+
         }
         catch(er){
-            console.log(er)
+            console.log("error :",er)
+            alert("Incorrect Credentials")
         }
 
-        let api= `https://masai-api-mocker.herokuapp.com/auth/login`
+       
 
-        let response=await fetch(api,{
-            method: "POST",
-
-            body:user,
-
-            headers:{
-                "Content-Type":"application/json"
-            },
-
-
-        });
-
-        var data=await response.json()
-        console.log(data)
-      
         
 
 
-        let username=form.username_login.value
-
-        getuserdata(username,data.token)
-
-         loginonpage(data)
+    
 
 
     }

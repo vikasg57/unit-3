@@ -215,7 +215,7 @@ let populardish=(items,location)=>{
        searchdata=setTimeout(function(){
           fu()
 
-        },2000)
+        },1000)
 
 
        
