@@ -1,3 +1,8 @@
+    body{
+        margin: 0px;
+        
+    }
+  
   #header {
         display: flex;
         padding-left: 4%;
@@ -41,15 +46,20 @@
         overflow:scroll;
         /* display: none; */
         background-color: white;
-        margin-left: 530px;
-        margin-top: -16px;
+        margin-left: 582px;
+        margin-top: -25px;
         position: absolute;
        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+       border-bottom-left-radius: 15px;
+       border-bottom-right-radius: 15px;
 
 
     }
 
     #results::-webkit-scrollbar{
+        display: none;
+    }
+    body::-webkit-scrollbar{
         display: none;
     }
     #header a{

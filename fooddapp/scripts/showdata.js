@@ -57,6 +57,7 @@ function searchresult(data,location){
 }
 
 let getitem=(el,location)=>{
+    
     console.log(el)
    
 
@@ -106,7 +107,7 @@ let populardish=(items,location)=>{
         title.innerHTML=strMeal
 
 
-        infodiv.append(title,area,)
+        infodiv.append(title)
 
         div.append(img,infodiv)
 

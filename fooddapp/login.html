@@ -6,16 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles/login.css">
+    <link rel="stylesheet" href="styles/header.css">
+   
 </head>
 
 <body>
+
+    <header>
+
+    </header>
             <div id="main">
-                <form action="" onsubmit="login(event)" id="form">
+                <form action=""  id="form">
                     <h1>Login</h1>
-                    <input type="text" id="username_login" />
-                    <input type="password" id="password_login" />
+                    <input type="text" id="username_login"  placeholder="username"/>
+                    <input type="password" id="password_login" placeholder="password" />
             
-                    <input type="submit" />
+                    <input type="submit" id="sub"/>
+
+                    <h3>Don't have an account <a href="signup.html">click here</a> </h3>
+
+
             
             
             
@@ -25,7 +35,23 @@
 
 </html>
 
-<script>
+<script type="module">
+
+
+    import { userinfo } from './scripts/showdata.js'
+    import {headerlogin} from './component/header.js'
+
+    document.querySelector('header').innerHTML = headerlogin()
+    let para = document.querySelector('#userinfo')
+    userinfo(para)
+
+    let form =document.querySelector('form')
+    form.addEventListener('submit',function(){
+        login(event)
+    })
+
+    
+    
 
     async function login(e){
 

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/search.css">
+    
+</head>
+
+<style>
+
+</style>
+
+
+
+<body>
+
+    
+
+    <header>
+
+    </header>
+
+ 
+
+        <div id="results"></div>
+
+        <div>
+            <h1>search your favourite dish</h1>
+        </div>
+
+
+        <div id="maindiv">
+            
+        </div>
+
+  
+    
+</body>
+</html>
+
+<script type="module">
+    let results=document.querySelector('#results')
+ 
+
+    import {getdata, searchresult,getitem,hidebox,debounce,userinfo} from './scripts/showdata.js'
+    import {header} from './component/header.js'
+
+    
+
+
+document.querySelector('header').innerHTML=header()
+
+    let para = document.querySelector('#userinfo')
+    userinfo(para)
+
+
+
+     var inputdish=document.querySelector('#searchdish')
+     inputdish.addEventListener('input',function(){
+         debounce(getdish)
+     })
+
+ 
+  
+    function getdish(){
+
+         var dish = document.querySelector('#searchdish').value
+        console.log(dish)
+
+
+    let response = getdata(`https://themealdb.com/api/json/v1/1/search.php?s=${dish}`)
+
+    //  getitem()
+   
+
+    response.then((res) => {
+        // console.log(res)
+        console.log(res.meals)
+        let data=res.meals
+        searchresult(data,results)
+
+     
+    })
+    response.catch((er) => {
+        console.log(er)
+    })
+
+    }
+
+
+let body=document.querySelector('#maindiv')
+
+    hidebox(body,results)
+
+    // export{getdish}
+
+
+</script>
+
+ 
