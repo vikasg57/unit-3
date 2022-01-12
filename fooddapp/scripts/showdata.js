@@ -206,6 +206,7 @@ let populardish=(items,location)=>{
 
      
         if(searchdata){
+            console.log(searchdata)
             clearTimeout(searchdata)
         }
 
@@ -221,6 +222,25 @@ let populardish=(items,location)=>{
     }
 
 
+    
 
+    
 
-export {getdata,searchresult,getitem,populardish,randomrecipe,hidebox,debounce,searchdata}
+    function userinfo(location){
+          var userdata= JSON.parse(localStorage.getItem('userdata')) || {name:"log in first",email:"log in first"}
+
+         let {name,email}=userdata
+        
+
+         let title= document.createElement('h3')
+         title.textContent= `Hello ! ${name}`
+
+          let mail= document.createElement('h3')
+         mail.textContent= `Email: ${email}`
+          console.log(title )
+
+         location.append(title,mail)
+
+    }
+
+export {getdata,searchresult,getitem,populardish,randomrecipe,hidebox,debounce,searchdata,userinfo}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/login.css">
+</head>
+
+
+<body>
+
+    <div id="main">
+        <h1>Register</h1>
+        <form id="form" onsubmit="signup(event)">
+           
+            <input type="text" id="name" placeholder="name" />
+            <input type="email" id="email" placeholder="email" />
+            <input type="text" id="username" placeholder="username" />
+            <input type="password" id="password" placeholder="password" />
+            <input type="number" id="mobile" placeholder="mobile">
+            <input type="text" id="description" placeholder="description" />
+            <input type="submit" />
+    
+        </form>
+    
+    </div>
+    
+</body>
+</html>
+
+<script>
+
+    async function signup(e){
+
+        try{
+
+             e.preventDefault()
+            var register_data = {
+                name: form.name.value,
+                email: form.email.value,
+                username: form.username.value,
+                password: form.password.value,
+                mobile: form.mobile.value,
+                description: form.description.value
+
+
+
+            }
+            register_data = JSON.stringify(register_data)
+            // console.log(register_data)
+
+           
+            
+
+
+        }
+        catch(er){
+            console.log(er)
+        }
+       
+
+        try{
+            let api = `https://masai-api-mocker.herokuapp.com/auth/register`
+
+            let response=await fetch(api,{
+                method:'POST',
+                body:register_data,
+                headers:{
+                    "Content-Type":"application/json"
+                },
+
+            });
+
+            let data = await response.json()
+
+            console.log(data)
+             signuponpage(data)
+        }
+        catch(er){
+            console.log(er)
+        }
+
+     
+    }
+
+    function signuponpage(el){
+        let {error}=el
+
+        if(error==false){
+            alert("sign up sucessful")
+            window.location.href="login.html"
+
+        }
+        else{
+            alert("Registration failed,User Already Exist")
+        }
+
+    }
+
+
+
+</script>

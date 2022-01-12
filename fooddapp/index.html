@@ -10,9 +10,15 @@
     
 </head>
 
+<style>
+
+</style>
+
 
 
 <body>
+
+    
 
     <header>
 
@@ -33,11 +39,16 @@
     let results=document.querySelector('#results')
  
 
-    import {getdata, searchresult,getitem,hidebox,debounce} from './scripts/showdata.js'
+    import {getdata, searchresult,getitem,hidebox,debounce,userinfo} from './scripts/showdata.js'
     import header from './component/header.js'
+
+    
 
 
 document.querySelector('header').innerHTML=header()
+
+    let para = document.querySelector('#userinfo')
+    userinfo(para)
 
 
 

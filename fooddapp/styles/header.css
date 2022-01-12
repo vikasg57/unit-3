@@ -5,15 +5,18 @@
         border: solid black 1px;
         justify-content: space-between;
         align-items: center;
+        background-color: black;
+        
     }
 
     #options {
         display: flex;
-        gap: 20px;
+        gap: 25px;
     }
     #searchdish{
         padding: 0px 100px;
         font-size: 20px;
+    
     }
     .searchbox{
         display: flex;
@@ -49,7 +52,23 @@
     #results::-webkit-scrollbar{
         display: none;
     }
+    #header a{
+        color: white;
+        text-decoration: none;
+    }
 
+    #userinfo>h3{
+      
+        margin: 2px;
+        font-style: italic;
+        
+    }
+        #userinfo{
+        display: flex;
+        justify-content: space-between;
+        padding: 0px 20px;
+
+    }
     
 
 

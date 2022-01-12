@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/login.css">
+</head>
+
+<body>
+            <div id="main">
+                <form action="" onsubmit="login(event)" id="form">
+                    <h1>Login</h1>
+                    <input type="text" id="username_login" />
+                    <input type="password" id="password_login" />
+            
+                    <input type="submit" />
+            
+            
+            
+                </form>
+            </div>
+</body>
+
+</html>
+
+<script>
+
+    async function login(e){
+
+        try{
+            e.preventDefault()
+            
+             var user = {
+                username: form.username_login.value,
+                password: form.password_login.value
+
+
+            }
+
+            user = JSON.stringify(user)
+            console.log(user)
+
+        }
+        catch(er){
+            console.log(er)
+        }
+
+        let api= `https://masai-api-mocker.herokuapp.com/auth/login`
+
+        let response=await fetch(api,{
+            method: "POST",
+
+            body:user,
+
+            headers:{
+                "Content-Type":"application/json"
+            },
+
+
+        });
+
+        var data=await response.json()
+        console.log(data)
+      
+        
+
+
+        let username=form.username_login.value
+
+        getuserdata(username,data.token)
+
+         loginonpage(data)
+
+
+    }
+
+
+    async function getuserdata(username,token){
+        try{
+            let api = `https://masai-api-mocker.herokuapp.com/user/${username}`
+
+            let response=await fetch (api,{
+                
+                headers:{
+                    "Content-Type":"application/json",
+                    Authorization: `Bearer ${token}`
+                }
+                
+            })
+            let data = await response.json()
+            
+          
+           localStorage.setItem("userdata", JSON.stringify(data))
+            console.log(data)
+
+        }
+        catch(er){
+             console.log("error:",er)
+        }
+    }
+
+    function loginonpage(el){
+
+        let {error}=el
+        console.log(error)
+
+        if(error==false){
+            alert("login sucessful")
+            
+                 
+
+           
+            window.location.href="index.html"
+        }
+        else{
+            alert("Incorrect credentials")
+        }
+
+
+    }
+
+
+
+</script>

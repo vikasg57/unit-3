@@ -23,12 +23,14 @@
     let results = document.querySelector('#results')
 
 
-    import { getdata, searchresult,getitem,populardish,hidebox,debounce} from './scripts/showdata.js'
+    import { getdata, searchresult,getitem,populardish,hidebox,debounce,userinfo} from './scripts/showdata.js'
     import header from './component/header.js'
 
     hidebox(maindiv,results)
 
     document.querySelector('header').innerHTML = header()
+      let para = document.querySelector('#userinfo')
+        userinfo(para)
 
     var inputdish = document.querySelector('#searchdish')
     inputdish.addEventListener('input', function () {

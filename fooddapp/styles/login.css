@@ -1,0 +1,19 @@
+  #main {
+        width: 30%;
+        text-align: center;
+        margin: auto;
+        margin-top: 10%;
+
+    }
+
+    #form {
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        flex-shrink: 0;
+        width: 50%;
+    }
+
+    input {
+        margin: 10px;
+    }

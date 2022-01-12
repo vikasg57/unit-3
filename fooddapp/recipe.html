@@ -43,6 +43,9 @@
     line-height: 1.5;
 
     }
+    h1{
+        margin-left: 50px;
+    }
 </style>
 <body>
     <header>
@@ -72,13 +75,15 @@
     let container= document.querySelector('#container')
 
 
-    import { getdata, searchresult, randomrecipe,hidebox,debounce} from './scripts/showdata.js'
+    import { getdata, searchresult, randomrecipe,hidebox,debounce,userinfo} from './scripts/showdata.js'
     import header from './component/header.js'
 
     hidebox(maindiv,results)
 
 
     document.querySelector('header').innerHTML = header()
+      let para = document.querySelector('#userinfo')
+        userinfo(para)
 
     var inputdish = document.querySelector('#searchdish')
     inputdish.addEventListener('input', function () {
