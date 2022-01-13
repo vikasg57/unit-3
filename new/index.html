@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<style>
+    div {
+        width: 13%;
+    }
+
+    input,
+    button {
+        margin-top: 10px;
+    }
+</style>
+
+<body>
+    <div>
+        <h1>Add Product</h1>
+        <input type="number" placeholder="id" id="id" />
+
+        <input type="name" placeholder="name" id="name" />
+
+        <input type="number" placeholder="price" id="price" />
+
+        <button onclick="addProducts()">Add Product</button>
+    </div>
+
+    <div>
+        <h1>Delete Product</h1>
+
+        <input type="text" id="delete_id" placeholder="Enter id to Delete" />
+
+        <button onclick="deleteProduct()">Delete Product</button>
+    </div>
+
+    <div>
+        <h1>edit Product</h1>
+
+    
+        <input type="text" id="edit_id" placeholder="Enter id to edit" />
+        <input type="name" placeholder="name" id="edit_name" />
+        
+        <input type="number" placeholder="price" id="edit_price" />
+    
+        <button onclick="editdata()">edit Product</button>
+
+      
+    </div>
+
+    <div id="data"></div>
+</body>
+
+</html>
+<script>
+
+   async function addProducts(){
+
+    try{
+         var data = {
+            id: document.querySelector('#id').value,
+
+            product: document.querySelector('#name').value,
+            price: document.querySelector('#price').value
+        }
+
+        data = JSON.stringify(data)
+
+        let response = await fetch(`http://127.0.0.1:3000/api/products`, {
+            method: 'POST',
+            body: data,
+            headers: {
+                "Content-Type": 'application/json'
+            }
+        })
+
+        let d = await response.json()
+
+        console.log("data :", data)
+
+    }
+    catch(er){
+        console.log(er)
+    }
+
+   
+
+    }
+
+    async function deleteProduct(){
+
+        try{
+               let id = document.querySelector("#delete_id").value
+
+            let response = await fetch(`http://127.0.0.1:3000/api/products/${id}`, {
+                method: "DELETE",
+
+                headers: {
+                    "Content-Type": 'application/json'
+                }
+            })
+
+            let d = await response.json()
+            console.log(d)
+
+
+        }
+
+        catch(er){
+            console.log(er)
+        }
+
+     
+
+
+    }
+
+ 
+
+    async function editdata(){
+
+         var input = {
+          
+            product: document.querySelector('#edit_name').value,
+            price: document.querySelector('#edit_price').value
+        }
+
+        input = JSON.stringify(input)
+
+        let id = document.querySelector('#edit_id').value
+
+        let response=await fetch(`http://127.0.0.1:3000/api/products/${id}`,{
+            method:"PUT",
+
+            body:input,
+
+            headers:{
+                "Content-Type":"application/json"
+
+            }
+        })
+
+        let data=await response.json()
+        // console.log(data)
+    }
+
+    getdata()
+
+    async function getdata() {
+
+        let response = await fetch(`http://127.0.0.1:3000/api/products`)
+        let data = await response.json()
+        console.log(data)
+        appenddata(data)
+    }
+
+    function appenddata(data){
+
+        data.map((el)=>{
+
+            let {id,product}=el
+            let p = document.createElement('p')
+            let code= document.createElement('p')
+            p.innerHTML=product
+            code.innerHTML=id
+
+            document.querySelector('#data').append(p,code)
+
+        })
+    }
+
+
+</script>

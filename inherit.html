@@ -12,21 +12,23 @@
 </html>
 <script>
     
-var grandparent ={
-    adress:"yeola",
-    sirname:"Gaikwad",
-    education : "7th"
-}
+// var grandparent ={
+//     adress:"yeola",
+//     sirname:"Gaikwad",
+//     education : "7th"
+// }
 
-var parent = Object.create(grandparent)
-parent.education="MA"
-parent.name="vijay"
+// var parent = Object.create(grandparent)
+// parent.education="MA"
+// parent.name="vijay"
 
-var son = Object.create(parent)
-son.name="vikas"
-son.education="MBA"
+// var son = Object.create(parent)
+// son.name="vikas"
+// son.education="MBA"
 
-console.log("son :",son)
+// console.log("son :",son)
+
+// console.log("adress:", son.sirname)
 
 
 function create(n,e){
@@ -48,6 +50,8 @@ create.prototype.education = "MA"
 
 console.log("parent",parent)
     console.log("son", son)
+
+    // console.log(son.sirname)
 
 
 </script>
