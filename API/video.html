@@ -55,9 +55,7 @@
         text-align: left;
     }
 
-    div{
-        /* border: 1px solid black; */
-    }
+  
 
 
     #main{
@@ -175,10 +173,15 @@
 
         let heading = document.createElement('h2')
         heading.textContent=title
+        let channelname= document.createElement('h3')
+        channelname.textContent=channelTitle
+      
+         let des = document.createElement('p')
+        des.textContent = description
 
 
 
-        document.querySelector('.videobox').append(iframe,heading)
+        document.querySelector('.videobox').append(iframe,heading,channelname,des)
         // video_div.append(heading)
             // localStorage.removeItem("clicked_video");
             showrecommendation(recommendation,iframe)

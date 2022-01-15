@@ -8,7 +8,35 @@
     <link rel="stylesheet" href="styles/header.css">
 </head>
 <style>
- 
+
+.container{
+    display: flex;
+    flex: 4;
+
+}
+
+.repodiv{
+  display: flex;
+     border: 1px solid black;
+     flex-direction: row;
+
+ }
+ .sidebar{
+     
+     flex: 2;
+     border: 1px solid red;
+
+ }
+
+ .sidebar>img{
+
+     width: 300px;
+     border-radius: 50%;
+ }
+.info{
+    align-content: center;
+    
+}
 
 </style>
 
@@ -55,7 +83,8 @@ async function searchUser(event){
     
 
     let{avatar_url}=response
-    // console.log(response)
+   // console.log(response)
+   display(response)
 
     document.querySelector('#profile-img').src=avatar_url
 
@@ -135,6 +164,39 @@ let displayrepo=(items)=>{
         
 
     })
+
+
+
+}
+
+let display=(items)=>{
+
+    console.log(items)
+
+    let {avatar_url,name,location}=items
+
+    let div = document.createElement('div')
+    div.setAttribute('class',"sidebar")
+       let div2 = document.createElement('div')
+    div2.setAttribute('class', "info")
+
+    let img=document.createElement('img')
+    img.src= avatar_url
+    let head=document.createElement('p')
+    head.innerHTML=name 
+    let loc=document.createElement('p')
+    loc.innerHTML=location
+       // document.querySelector('#profile-img').src = avatar_url
+
+
+    div2.append(name,loc)
+    div.append(img,div2)
+
+    document.querySelector('.container').append(div)
+   
+
+    
+
 
 
 
