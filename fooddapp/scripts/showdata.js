@@ -129,7 +129,7 @@ let populardish=(items,location)=>{
         data.map((el) => {
 
             let{strArea, strMeal, strMealThumb,strIngredient1, strIngredient2, strIngredient3, strIngredient4, strIngredient5,strMeasure1, strMeasure2, strMeasure3, strMeasure4, strMeasure5,strInstructions}=el
-            
+
 
             let div = document.createElement('div')
             div.setAttribute('class',"main")
@@ -176,8 +176,6 @@ let populardish=(items,location)=>{
          
             ingdiv.setAttribute('class', "measurediv")
 
-
-
             ingdiv.append(ingredient,ingredient2,ingredient3,ingredient4,ingredient5)
 
             imgdiv.append(img)
@@ -210,7 +208,6 @@ let populardish=(items,location)=>{
             console.log(searchdata)
             clearTimeout(searchdata)
         }
-
 
        searchdata=setTimeout(function(){
           fu()
